@@ -1,0 +1,28 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  
+  dependencies {
+    classpath "io.ratpack:ratpack-gradle:1.3.0"
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+  }
+}
+
+apply plugin: "io.ratpack.ratpack-java"
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+mainClassName = 'info.batey.djvm.Main'
+
+dependencies {
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+}
+
+repositories {
+    jcenter()
+}
+
+task wrapper(type: Wrapper) {
+      gradleVersion = '2.12'
+}

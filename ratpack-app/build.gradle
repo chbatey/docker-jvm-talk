@@ -23,6 +23,13 @@ repositories {
     jcenter()
 }
 
-task wrapper(type: Wrapper) {
-      gradleVersion = '2.12'
+task copyJar(type: Exec, dependsOn: 'shadowJar') {
+    commandLine 'cp', './build/libs/ratpack-app-all.jar', './docker/'
 }
+
+task dockerBuild(type: Exec, dependsOn: 'copyJar') {
+    workingDir './docker'
+    commandLine 'docker', 'build', '-t', 'ratpack-app', '.'
+}
+
+build.dependsOn(dockerBuild)

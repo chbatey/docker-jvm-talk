@@ -1,6 +1,39 @@
 apply plugin: 'java'
+buildscript {
+  repositories {
+    jcenter()
+  }
 
-sourceCompatibility = 1.8               
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+  }
+}
+apply plugin: 'com.github.johnrengelman.shadow'
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'info.batey.djvm.ExampleApplication'
+  }
+}
+
+shadowJar {
+  mergeServiceFiles()
+  exclude 'META-INF/*.DSA'
+  exclude 'META-INF/*.RSA'
+}
+
+sourceCompatibility = 1.8
+
+task copyJar(type: Exec, dependsOn: 'shadowJar') {
+  commandLine 'cp', './build/libs/dropwizard-app-all.jar', './docker/'
+}
+
+task dockerBuild(type: Exec, dependsOn: 'copyJar') {
+  workingDir './docker'
+  commandLine 'docker', 'build', '-t', 'dropwizard-app', '.'
+}
+
+build.dependsOn(dockerBuild)
 
 project.ext {               
   dropwizardVersion = '0.9.2' 
@@ -14,6 +47,4 @@ dependencies {
   compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '2.12'
-}
+

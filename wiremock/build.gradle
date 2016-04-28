@@ -1,0 +1,3 @@
+task build(type: Exec) {
+  commandLine 'docker', 'build', '-t', 'wiremock', '.'
+}

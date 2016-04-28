@@ -1,0 +1,4 @@
+include 'base-image'
+include 'wiremock'
+include 'dropwizard-app'
+include 'ratpack-app'

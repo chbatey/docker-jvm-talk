@@ -1,6 +1,6 @@
 # Running a JVM in Docker, a good idea?
 
-## Intro>
+## Intro
 
 Understanding the complexities of running your JVM based application inside a
 linux container, specifically Docker.
@@ -24,9 +24,12 @@ linux container, specifically Docker.
 
 ### Cost savings
 
-// Show number of servers for single vs VMs vs Kubernetes
+// TODO: Show number of servers for single vs VMs vs Kubernetes
 
-## What>
+## What
+
+The best way to work with Docker is to learn a small amount about the underlying 
+kernel features.
 
 ### Namespaces
 
@@ -65,14 +68,14 @@ load and how that cgroup grow.
 TODO: 
 * Show options that can be passed to Docker run vs settings on cgroups.
 
-`memory`
-`memory--swap`
-`memory-soft-limit`
-`oom-kill-disable` (Show a java process with this on and not on)
+* `memory`
+* `memory--swap`
+* `memory-soft-limit`
+* `oom-kill-disable` (Show a java process with this on and not on)
 
-`cpu-shares`
-`cpuset-cpu`
-`cpu-mems` (for NUMA)
+* `cpu-shares`
+* `cpuset-cpu`
+* `cpu-mems` (for NUMA)
 
 TODO: Show kubernetes docs about squashable resources
 
@@ -94,10 +97,22 @@ Scenario: to get 1000 TPS for a container.
 
 The logic inside the app containers one HTTP call and one Database call.
 
-Goal is to make oour container as small as possible.
+Goal is to make our container as small as possible.
+
+Areas to investigate:
+jkkkkk
+* Memory usage
+* Tuning threads
+
 
 ### Thread per request
 
+A lot of Java web frameworks, Servlets included, use the thread per request execution model.
+
+// TODO Picture of a pool of threads
+
+The popular Jetty servlet container is one such library. Dropwizard is a framework
+that brings together Jersey with a few other popular libraries.
 
 #### Dropwizard
 

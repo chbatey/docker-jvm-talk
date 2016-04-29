@@ -2,10 +2,16 @@ Add Running a JVM in Docker, a good idea?
 
 ## Intro
 
-Understanding the complexities of running your JVM based application inside a
+This is a set of resources for understanding the complexities of running your JVM based application inside a
 linux container, specifically Docker.
+ 
+I'm doing a talk at the following conferences based on this material:
+* Geecon 2016
+* Devoxx UK 2016
 
 ### Motivation
+
+Why do we want to run our application inside containers?
 
 * Multi tenancy
 * Consistent deployment format across technology stacks
@@ -100,10 +106,11 @@ The logic inside the app containers one HTTP call and one Database call.
 Goal is to make our container as small as possible.
 
 Areas to investigate:
-jkkkkk
 * Memory usage
 * Tuning threads
 
+TODO
+* Count number of threads
 
 ### Thread per request
 

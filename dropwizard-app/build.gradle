@@ -6,6 +6,7 @@ buildscript {
 
   dependencies {
     classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+
   }
 }
 apply plugin: 'com.github.johnrengelman.shadow'
@@ -45,6 +46,7 @@ repositories {
 
 dependencies {
   compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+  compile group: 'io.dropwizard', name: 'dropwizard-client', version: dropwizardVersion
 }
 
 

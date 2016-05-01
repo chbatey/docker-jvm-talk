@@ -4,6 +4,7 @@ services:
     image: wiremock
     ports:
       - "7070:7070"
+    cpuset: "8,9,10,11"
 
   ratpack:
     image: ratpack-app
@@ -11,6 +12,7 @@ services:
       - "5050:5050"
     links:
       - wiremock
+    cpuset: "2"
 
   dropwizard:
     image: dropwizard-app
@@ -18,3 +20,4 @@ services:
       - "8080:8080"
     links:
       - wiremock
+    cpuset: "1"

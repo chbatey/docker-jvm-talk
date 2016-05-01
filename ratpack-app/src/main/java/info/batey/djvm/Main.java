@@ -26,7 +26,7 @@ public class Main {
                             Db database = ctx.get(Db.class);
 
                             Promise<String> response = ctx.get(HttpClient.class)
-                                    .get(new URI("http://localhost:7070/name"))
+                                    .get(new URI("http://wiremock:7070/name"))
                                     .map(r -> r.getBody().getText());
 
                             Promise<String> withDb = response.flatMap(database::getRecord);

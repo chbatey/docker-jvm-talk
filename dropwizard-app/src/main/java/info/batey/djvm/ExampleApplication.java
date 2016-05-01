@@ -1,7 +1,9 @@
 package info.batey.djvm;
 
 import io.dropwizard.Application;
+import io.dropwizard.client.HttpClientBuilder;
 import io.dropwizard.setup.Environment;
+import org.apache.http.client.HttpClient;
 
 public class ExampleApplication extends Application<Config> {
 
@@ -10,7 +12,9 @@ public class ExampleApplication extends Application<Config> {
     }
 
     @Override
-    public void run(Config configuration, Environment environment) throws Exception {
-        environment.jersey().register(new Service());
+    public void run(Config config, Environment environment) throws Exception {
+        final HttpClient httpClient = new HttpClientBuilder(environment).using(config.getHttpClientConfiguration())
+                .build("http-client");
+        environment.jersey().register(new Service(httpClient));
     }
 }

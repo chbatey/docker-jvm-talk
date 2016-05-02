@@ -1,0 +1,23 @@
+version: '2'
+services: 
+  wiremock:
+    image: wiremock
+    ports:
+      - "7070:7070"
+    cpu_quota: 400000
+
+  ratpack:
+    image: ratpack-app
+    ports:
+      - "5050:5050"
+    links:
+      - wiremock
+    cpu_quota: 100000
+
+  dropwizard:
+    image: dropwizard-app
+    ports:
+      - "8080:8080"
+    links:
+      - wiremock
+    cpu_quota: 100000

@@ -139,7 +139,4 @@ that brings together Jersey with a few other popular libraries.
 
 
 TODO:
-* Get CAdvisor on laptop
-* Bootstrap all examples + download dependencies
-* Compare various java base images
-* Add logback to ratpack
+* Look at the java swiss army knife

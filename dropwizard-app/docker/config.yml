@@ -1,9 +1,11 @@
 server:
 #  softNofileLimit: 1000
 #  hardNofileLimit: 1000
+  minThreads: 1
+  maxThreads: 5
   applicationConnectors:
     - type: http
-      port: 8080
+      port: 9080
   adminConnectors:
     - type: http
       port: 8081

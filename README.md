@@ -8,6 +8,7 @@ linux container, specifically Docker.
 I'm doing a talk at the following conferences based on this material:
 * Geecon 2016
 * Devoxx UK 2016
+* Devoxx Poland 2016
 
 ### Motivation
 
